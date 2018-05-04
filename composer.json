@@ -28,7 +28,8 @@
         "eaglewu/swoole-ide-helper": "dev-master",
         "phpunit/phpunit": "^5.7",
         "friendsofphp/php-cs-fixer": "^2.10",
-        "vlucas/phpdotenv": "~2.0"
+        "vlucas/phpdotenv": "~2.0",
+        "codedungeon/phpunit-result-printer": "^0.9.3"
     },
     "autoload-dev": {
         "psr-4": {

@@ -201,25 +201,16 @@ class PDO extends NativePDO
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.2.0)<br/>
      * Executes an SQL statement, returning a result set as a PDOStatement object
-     * @link http://php.net/manual/en/pdo.query.php
-     * @param string $statement <p>
-     * The SQL statement to prepare and execute.
-     * </p>
-     * <p>
-     * Data inside the query should be properly escaped.
-     * </p>
-     * @param int $mode <p>
-     * The fetch mode must be one of the PDO::FETCH_* constants.
-     * </p>
-     * @param mixed $arg3 <p>
-     * The second and following parameters are the same as the parameters for PDOStatement::setFetchMode.
-     * </p>
-     * @param array $ctorargs [optional] <p>
-     * Arguments of custom class constructor when the <i>mode</i>
-     * parameter is set to <b>PDO::FETCH_CLASS</b>.
-     * </p>
-     * @return PDOStatement|bool <b>PDO::query</b> returns a PDOStatement object, or <b>FALSE</b>
-     * on failure.
+     * 
+     * @link  http://php.net/manual/en/pdo.query.php
+     * 
+     * @param string $statement The SQL statement to prepare and execute. Data inside the query should be properly escaped.
+     * @param int    $mode      The fetch mode must be one of the PDO::FETCH_* constants. *
+     * @param mixed  $arg3      The second and following parameters are the same as the parameters for PDOStatement::setFetchMode. *
+     * @param array  $ctorargs  Arguments of custom class constructor when the mode * parameter is set to PDO::FETCH_CLASS
+     *
+     * @return PDOStatement|bool PDO::query returns a PDOStatement object, or FALSE on failure.
+     * 
      * @see PDOStatement::setFetchMode For a full description of the second and following parameters.
      */
     public function query($statement, $mode = PDO::ATTR_DEFAULT_FETCH_MODE, $arg3 = null, array $ctorargs = array())

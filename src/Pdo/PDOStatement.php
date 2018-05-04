@@ -2,16 +2,18 @@
 namespace Kuaiapp\Db\Pdo;
 
 use Swoole\Coroutine as co;
-use Iterator;
 use PDOStatement as NativePDOStatement;
+use IteratorAggregate;
+use Kuaiapp\Db\Base\Row;
 
 /**
  * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 1.0.0)<br/>
  * Represents a prepared statement and, after the statement is executed, an
  * associated result set.
+ * 
  * @link http://php.net/manual/en/class.pdostatement.php
  */
-class PDOStatement extends NativePDOStatement
+class PDOStatement extends NativePDOStatement implements IteratorAggregate
 {
     /**
      * PDO对象
@@ -21,11 +23,18 @@ class PDOStatement extends NativePDOStatement
     protected $pdo = null;
 
     /**
+     * Iterator offset
+     *
+     * @var integer
+     */
+    protected $iterator_offset = 0;
+
+    /**
      * 查询字串
      * 
      * @var string
      */
-    public $queryString;
+    public $queryString_copy;
 
     /**
      * Stmt对象
@@ -54,7 +63,7 @@ class PDOStatement extends NativePDOStatement
     {
         $instance = new self();
         $instance->statement    = $statement;
-        //$instance->queryString  = $queryString;
+        $instance->queryString_copy  = $queryString;
         $instance->pdo          = $pdo;
 
         return $instance;
@@ -120,6 +129,7 @@ class PDOStatement extends NativePDOStatement
     public function fetch($fetch_style = null, $cursor_orientation = PDO::FETCH_ORI_NEXT, $cursor_offset = 0)
     {
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)<br/>
      * Binds a parameter to the specified variable name
@@ -153,6 +163,7 @@ class PDOStatement extends NativePDOStatement
     public function bindParam($parameter, &$variable, $data_type = PDO::PARAM_STR, $length = null, $driver_options = null)
     {
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)<br/>
      * Bind a column to a PHP variable
@@ -179,6 +190,7 @@ class PDOStatement extends NativePDOStatement
     public function bindColumn($column, &$param, $type = null, $maxlen = null, $driverdata = null)
     {
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 1.0.0)<br/>
      * Binds a value to a parameter
@@ -202,6 +214,7 @@ class PDOStatement extends NativePDOStatement
     public function bindValue($parameter, $value, $data_type = PDO::PARAM_STR)
     {
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)<br/>
      * Returns the number of rows affected by the last SQL statement
@@ -212,6 +225,7 @@ class PDOStatement extends NativePDOStatement
     {
         return $this->pdo->affected_rows;
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.9.0)<br/>
      * Returns a single column from the next row of a result set
@@ -231,6 +245,7 @@ class PDOStatement extends NativePDOStatement
     public function fetchColumn($column_number = 0)
     {
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)<br/>
      * Returns an array containing all of the result set rows
@@ -285,6 +300,7 @@ class PDOStatement extends NativePDOStatement
     {
         return $this->result;
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.2.4)<br/>
      * Fetches the next row and returns it as an object.
@@ -301,6 +317,7 @@ class PDOStatement extends NativePDOStatement
     public function fetchObject($class_name = null, $ctor_args = null)
     {
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)<br/>
      * Fetch the SQLSTATE associated with the last operation on the statement handle
@@ -312,6 +329,7 @@ class PDOStatement extends NativePDOStatement
     public function errorCode()
     {
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)<br/>
      * Fetch extended error information associated with the last operation on the statement handle
@@ -340,6 +358,7 @@ class PDOStatement extends NativePDOStatement
     public function errorInfo()
     {
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.2.0)<br/>
      * Set a statement attribute
@@ -351,6 +370,7 @@ class PDOStatement extends NativePDOStatement
     public function setAttribute($attribute, $value)
     {
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.2.0)<br/>
      * Retrieve a statement attribute
@@ -361,6 +381,7 @@ class PDOStatement extends NativePDOStatement
     public function getAttribute($attribute)
     {
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.2.0)<br/>
      * Returns the number of columns in the result set
@@ -372,6 +393,7 @@ class PDOStatement extends NativePDOStatement
     public function columnCount()
     {
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.2.0)<br/>
      * Returns metadata for a column in a result set
@@ -435,6 +457,7 @@ class PDOStatement extends NativePDOStatement
     public function getColumnMeta($column)
     {
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.2.0)<br/>
      * Set the default fetch mode for this statement
@@ -451,6 +474,7 @@ class PDOStatement extends NativePDOStatement
     public function setFetchMode($mode, $params = null)
     {
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.2.0)<br/>
      * Advances to the next rowset in a multi-rowset statement handle
@@ -460,6 +484,7 @@ class PDOStatement extends NativePDOStatement
     public function nextRowset()
     {
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.9.0)<br/>
      * Closes the cursor, enabling the statement to be executed again.
@@ -469,6 +494,7 @@ class PDOStatement extends NativePDOStatement
     public function closeCursor()
     {
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.9.0)<br/>
      * Dump an SQL prepared command
@@ -480,52 +506,16 @@ class PDOStatement extends NativePDOStatement
     }
 
     /**
-     * Iterator::current
+     * If foreach pdo::query's result
      *
-     * @return array|object|null
+     * @return self
      */
-    public function current()
+    public function getIterator()
     {
-
-    }
-
-    /**
-     * Iterator::key
-     *
-     * @return mixed
-     */
-    public function key()
-    {
-
-    }
-
-    /**
-     * Iterator::next
-     *
-     * @return void
-     */
-    public function next()
-    {
-
-    }
-
-    /**
-     * Iterator::rewind
-     *
-     * @return void
-     */
-    public function rewind()
-    {
-
-    }
-
-    /**
-     * Iterator::valid
-     *
-     * @return bool
-     */
-    public function valid()
-    {
-
+        $sql = $this->queryString_copy . ' LIMIT ' . $this->iterator_offset . ', 1';
+        $stmt = $this->pdo->prepare($sql);
+        $result = $stmt->fetchAll();
+        $this->iterator_offset ++;
+        return new Row([]);
     }
 }
