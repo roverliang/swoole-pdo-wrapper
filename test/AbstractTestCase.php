@@ -54,9 +54,9 @@ class AbstractTestCase extends TestCase
      */
     private function _initDB()
     {
-        //print_r(['mysql:host='.getenv('DB_HOST').';dbname='.getenv('DB_NAME').'', getenv('DB_USERNAME'), getenv('DB_PASSWORD')]);
-        $this->pdo_swoole = new KuaiPDO('mysql:host='.getenv('DB_HOST').';dbname='.getenv('DB_NAME').'', getenv('DB_USERNAME'), getenv('DB_PASSWORD'));
-        $this->pdo_native = new NativePDO('mysql:host='.getenv('DB_HOST').';dbname='.getenv('DB_NAME').'', getenv('DB_USERNAME'), getenv('DB_PASSWORD'));
+        //print_r(['mysql:host='.getenv('DB_HOST').';dbname='.getenv('DB_DATABASE').'', getenv('DB_USERNAME'), getenv('DB_PASSWORD')]);
+        $this->pdo_swoole = new KuaiPDO('mysql:host='.getenv('DB_HOST').';dbname='.getenv('DB_DATABASE').'', getenv('DB_USERNAME'), getenv('DB_PASSWORD'));
+        $this->pdo_native = new NativePDO('mysql:host='.getenv('DB_HOST').';dbname='.getenv('DB_DATABASE').'', getenv('DB_USERNAME'), getenv('DB_PASSWORD'));
     }
 
     /**
