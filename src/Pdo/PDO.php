@@ -356,23 +356,6 @@ class PDO extends NativePDO
     public function getAttribute($attribute)
     {
     }
-    /**
-     * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.2.1)<br/>
-     * Quotes a string for use in a query.
-     * @link http://php.net/manual/en/pdo.quote.php
-     * @param string $string <p>
-     * The string to be quoted.
-     * </p>
-     * @param int $parameter_type [optional] <p>
-     * Provides a data type hint for drivers that have alternate quoting styles.
-     * </p>
-     * @return string a quoted string that is theoretically safe to pass into an
-     * SQL statement. Returns <b>FALSE</b> if the driver does not support quoting in
-     * this way.
-     */
-    public function quote($string, $parameter_type = PDO::PARAM_STR)
-    {
-    }
 
     /**
      * (PHP 5 &gt;= 5.1.3, PHP 7, PECL pdo &gt;= 1.0.3)<br/>

@@ -26,14 +26,14 @@ Swoole\Coroutine\MySQL 的 PDO接口实现, 还未完成
 - [x] PDO::errorCode() 待校准
 - [x] PDO::errorInfo() 待校准
 - [ ] PDO::getAttribute($attribute)
-- [ ] PDO::quote($string, $parameter_type = PDO::PARAM_STR)
-- [ ] PDO::__wakeup()
-- [ ] PDO::__sleep()
-- [ ] PDOStatement::current()
-- [ ] PDOStatement::key()
-- [ ] PDOStatement::next()
-- [ ] PDOStatement::rewind()
-- [ ] PDOStatement::valid()
+- [x] PDO::quote($string, $parameter_type = PDO::PARAM_STR)
+- [ ] ~~PDO::__wakeup()~~
+- [ ] ~~PDO::__sleep()~~
+- [ ] ~~PDOStatement::current()~~
+- [ ] ~~PDOStatement::key()~~
+- [ ] ~~PDOStatement::next()~~
+- [ ] ~~PDOStatement::rewind()~~
+- [ ] ~~PDOStatement::valid()~~
 - [x] PDOStatement::execute($input_parameters = null)
 - [ ] PDOStatement::fetch($fetch_style = null, $cursor_orientation = PDO::FETCH_ORI_NEXT, $cursor_offset = 0)
 - [ ] PDOStatement::bindParam($parameter, &$variable, $data_type = PDO::PARAM_STR, $length = null, $driver_options = null)
@@ -52,7 +52,7 @@ Swoole\Coroutine\MySQL 的 PDO接口实现, 还未完成
 - [ ] PDOStatement::setFetchMode($mode, $classNameObject, array $ctorarfg)
 - [ ] PDOStatement::nextRowset()
 - [ ] PDOStatement::closeCursor()
-- [ ] PDOStatement::debugDumpParams()
+- [ ] ~~PDOStatement::debugDumpParams()~~
 - [ ] PDOException::__construct()
 
 

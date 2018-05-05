@@ -493,14 +493,4 @@ class PDOStatement extends NativePDOStatement
     public function closeCursor()
     {
     }
-
-    /**
-     * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.9.0)<br/>
-     * Dump an SQL prepared command
-     * @link http://php.net/manual/en/pdostatement.debugdumpparams.php
-     * @return bool No value is returned.
-     */
-    public function debugDumpParams()
-    {
-    }
 }
