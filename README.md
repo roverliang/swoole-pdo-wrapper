@@ -26,7 +26,7 @@ Swoole\Coroutine\MySQL 的 PDO接口实现, 还未完成
 - [x] PDO::errorCode() 待校准
 - [x] PDO::errorInfo() 待校准
 - [ ] PDO::getAttribute($attribute)
-- [x] PDO::quote($string, $parameter_type = PDO::PARAM_STR)
+- [ ] ~~PDO::quote($string, $parameter_type = PDO::PARAM_STR)~~
 - [ ] ~~PDO::__wakeup()~~
 - [ ] ~~PDO::__sleep()~~
 - [ ] ~~PDOStatement::current()~~

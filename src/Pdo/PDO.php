@@ -140,8 +140,8 @@ class PDO extends NativePDO
     {
         $this->exec('ROLLBACK');
         $this->in_transaction = false;
-
     }
+
     /**
      * (PHP 5 &gt;= 5.3.3, Bundled pdo_pgsql, PHP 7)<br/>
      * Checks if inside a transaction
@@ -153,6 +153,7 @@ class PDO extends NativePDO
     {
         return !!$this->in_transaction;
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)<br/>
      * Set an attribute
@@ -164,6 +165,7 @@ class PDO extends NativePDO
     public function setAttribute($attribute, $value)
     {
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)<br/>
      * Execute an SQL statement and return the number of affected rows
@@ -257,6 +259,7 @@ class PDO extends NativePDO
     {
         return $this->connection->insert_id;
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)<br/>
      * Fetch the SQLSTATE associated with the last operation on the database handle
@@ -287,6 +290,7 @@ class PDO extends NativePDO
     {
         return $this->connection->errno;
     }
+
     /**
      * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)<br/>
      * Fetch extended error information associated with the last operation on the database handle
