@@ -216,12 +216,18 @@ class PDO extends NativePDO
     public function query($statement, $mode = PDO::ATTR_DEFAULT_FETCH_MODE, $arg3 = null, array $ctorargs = array())
     {
         // @todo 功能未實現
-        $stmt = $this->connection->prepare($statement);
-        if ($stmt == false) {
+        $result = $this->connection->query($statement);
+        if ($result == false) {
             throw new PDOException($this->connection->error, $this->connection->errno);
         }
 
-        return PDOStatement::capture($stmt, $statement, $this);
+        if ($mode == self::FETCH_CLASS) {
+            foreach ($result as $key => $row) {
+                $result[$key] = new $arg3($row);
+            }
+        }
+
+        return $result; //PDOStatement::capture($stmt, $statement, $this);
     }
 
     /**

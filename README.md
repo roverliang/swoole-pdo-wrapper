@@ -21,7 +21,7 @@ Swoole\Coroutine\MySQL 的 PDO接口实现, 还未完成
 - [x] PDO::inTransaction()
 - [ ] PDO::setAttribute($attribute, $value)
 - [x] PDO::exec($statement)
-- [ ] PDO::query($statement, $mode = PDO::ATTR_DEFAULT_FETCH_MODE, $arg3 = null, array $ctorargs = array())
+- [x] PDO::query($statement, $mode = PDO::ATTR_DEFAULT_FETCH_MODE, $arg3 = null, array $ctorargs = array()) 但目前没有实现作为pdostatement对象返回
 - [x] PDO::lastInsertId($name = null)
 - [x] PDO::errorCode() 待校准
 - [x] PDO::errorInfo() 待校准

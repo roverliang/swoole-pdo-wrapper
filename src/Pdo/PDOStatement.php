@@ -3,7 +3,6 @@ namespace Kuaiapp\Db\Pdo;
 
 use Swoole\Coroutine as co;
 use PDOStatement as NativePDOStatement;
-use IteratorAggregate;
 use Kuaiapp\Db\Base\Row;
 
 /**
@@ -13,7 +12,7 @@ use Kuaiapp\Db\Base\Row;
  * 
  * @link http://php.net/manual/en/class.pdostatement.php
  */
-class PDOStatement extends NativePDOStatement implements IteratorAggregate
+class PDOStatement extends NativePDOStatement
 {
     /**
      * PDO对象
@@ -503,19 +502,5 @@ class PDOStatement extends NativePDOStatement implements IteratorAggregate
      */
     public function debugDumpParams()
     {
-    }
-
-    /**
-     * If foreach pdo::query's result
-     *
-     * @return self
-     */
-    public function getIterator()
-    {
-        $sql = $this->queryString_copy . ' LIMIT ' . $this->iterator_offset . ', 1';
-        $stmt = $this->pdo->prepare($sql);
-        $result = $stmt->fetchAll();
-        $this->iterator_offset ++;
-        return new Row([]);
     }
 }

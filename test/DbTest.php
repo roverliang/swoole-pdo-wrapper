@@ -42,12 +42,12 @@ class DbTest extends AbstractTestCase
     public function __PDO_query()
     {
         $row1 = $row2 = [];
-        foreach ($this->pdo_swoole->query('SELECT 1 AS name', PDO::FETCH_ASSOC) as $row) {
+        foreach ($this->pdo_swoole->query('SELECT 1 AS name') as $row) {
             $row1 = $row;
             break;
         }
 
-        foreach ($this->pdo_native->query('SELECT 1 AS name', PDO::FETCH_ASSOC) as $row) {
+        foreach ($this->pdo_native->query('SELECT 1 AS name') as $row) {
             $row2 = $row;
             break;
         }
