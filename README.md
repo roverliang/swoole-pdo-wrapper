@@ -70,7 +70,8 @@ composer require kuaiapp/db
 
 ## Known Issue
 
-- You can only use `Kuaiapp\Db\Pdo\PDO*` classes in SWOOLE `request` `receive` ... event or [`Coroutine`](https://github.com/swoole/swoole-src#coroutine) because of [swoole's limits](https://github.com/swoole/swoole-src/blob/37d1067687cff0b67fed978f9397ff72d76f6612/swoole_coroutine.c#L204).
+- You can only use `Kuaiapp\Db\Pdo\PDO*` classes in SWOOLE `request` `receive` ... event or [`Coroutine`](https://github.com/swoole/swoole-src#coroutine) due to [swoole's limits](https://github.com/swoole/swoole-src/blob/37d1067687cff0b67fed978f9397ff72d76f6612/swoole_coroutine.c#L204).
+- You can't use this package if query in `call_user_func` or `call_user_func_array` due to [swoole's limits](https://wiki.swoole.com/wiki/page/853.html). but you can try to make call_user_func to `Swoole\Coroutine::call_user_func`
 
 ## Credit
 
