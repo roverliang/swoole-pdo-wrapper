@@ -64,6 +64,9 @@ Install by [Composer](https://getcomposer.org)
 composer require kuaiapp/db
 ```
 
+After composer required, try to replace `new PDO` into `new \Kuaiapp\Db\PDO`, 
+If you are using laravel framework, an additional step is required: https://github.com/Kuaiapp/swoole-pdo-wrapper/wiki/Laravel-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B 
+
 ## Require
 
 - Swoole > 2.1.2, enable coroutine, enable mysqld
